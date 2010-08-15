@@ -41,10 +41,9 @@ class Model extends \ActiveRecord\Model {
 			}
 			return $errors;
 		}
-	
-		if ($this->errors->$field != null) {
+		if ($this->errors->on($field) != null) {
 			$errors = $this->errors->$field;
-			return $errors[0];
+			return $errors;
 		}
 		if ($value !== null) {
 			return $this->errors->$field = $value;

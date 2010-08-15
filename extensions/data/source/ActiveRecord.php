@@ -3,9 +3,7 @@
 namespace li3_activerecord\extensions\data\source;
 
 use \ActiveRecord\Config;
-use \ActiveRecord\Connection;
 use \lithium\util\String;
-use \lithium\data\Connections;
 
 class ActiveRecord extends \lithium\data\source\Database {
 
