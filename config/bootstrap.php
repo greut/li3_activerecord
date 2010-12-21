@@ -11,6 +11,7 @@ if (!defined('ACTIVERECORD_LIB_PATH')) {
 require ACTIVERECORD_LIB_PATH . '/Singleton.php';
 require ACTIVERECORD_LIB_PATH . '/Config.php';
 require ACTIVERECORD_LIB_PATH . '/Utils.php';
+require ACTIVERECORD_LIB_PATH . '/Binary.php';
 require ACTIVERECORD_LIB_PATH . '/DateTime.php';
 require ACTIVERECORD_LIB_PATH . '/Model.php';
 require ACTIVERECORD_LIB_PATH . '/Table.php';
