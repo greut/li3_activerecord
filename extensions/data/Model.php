@@ -2,7 +2,7 @@
 
 namespace li3_activerecord\extensions\data;
 
-use \ActiveRecord\Connection;
+use ActiveRecord\Connection;
 
 class Model extends \ActiveRecord\Model {
 
@@ -16,7 +16,7 @@ class Model extends \ActiveRecord\Model {
 	
 	public function schema($field = null) {
 		$connection = Connection::instance();
-		$columns = $connection->columns('users');
+		$columns = $connection->columns($this->table_name);
 		$schema = array();
 		if (key_exists($field, $columns)) {
 			return array($field => $columns[$field]->raw_type);

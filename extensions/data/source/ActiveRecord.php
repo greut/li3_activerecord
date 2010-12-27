@@ -2,12 +2,12 @@
 
 namespace li3_activerecord\extensions\data\source;
 
-use \ActiveRecord\Config;
-use \lithium\util\String;
+use ActiveRecord\Config;
+use lithium\util\String;
 
 class ActiveRecord extends \lithium\data\source\Database {
 
-	public function __construct(array $config = array()) {
+	public function __construct(array $config=array()) {
 		$cfg = Config::instance();
 		$config = array_merge(array(
 			'model_directory' => LITHIUM_APP_PATH . DIRECTORY_SEPARATOR . 'models',
@@ -18,34 +18,36 @@ class ActiveRecord extends \lithium\data\source\Database {
 			'database' => 'li3'
 		), $config);
 		$cfg->set_model_directory($config['model_directory']);
-			$driver = $config['driver'] = strtolower($config['driver']);
-			$connection = String::insert(
-				$driver == 'sqlite' ? 'sqlite://{:database}.db' : '{:driver}://{:login}:{:password}@{:host}/{:database}',
-				$config
-			);
-			$cfg->set_connections(array('default' => $connection));
-			$cfg->set_default_connection('default');
+		$driver = $config['driver'] = strtolower($config['driver']);
+		$connection = String::insert(
+			$driver == 'sqlite' ?
+				'sqlite://{:database}.db' :
+				'{:driver}://{:login}:{:password}@{:host}/{:database}',
+			$config
+		);
+		$cfg->set_connections(array('default' => $connection));
+		$cfg->set_default_connection('default');
 		parent::__construct($config);
 	}
-	
+
 	public function connect() {}
-	
+
 	public function disconnect() {}
-	
-	public function entities($model = null) {}
-	
-	public function describe($entity, array $meta = array()) {}
-	
-	public function encoding($encoding = null) {}
-	
+
+	public function entities($model=null) {}
+
+	public function describe($entity, array $meta=array()) {}
+
+	public function encoding($encoding=null) {}
+
 	public function result($type, $resource, $context) {}
-	
+
 	public function error() {}
-	
+
 	protected function _execute($sql) {}
-	
+
 	protected function _insertId($query) {}
-	
+
 }
 
 ?>
