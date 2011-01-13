@@ -15,7 +15,9 @@ class ActiveRecord extends \lithium\data\source\Database {
 			'host' => '127.0.0.1',
 			'login' => 'root',
 			'password' => '',
-			'database' => 'li3'
+			'database' => 'li3',
+			'cache' => false,
+			'cache_expire' => 30
 		), $config);
 		$cfg->set_model_directory($config['model_directory']);
 		$driver = $config['driver'] = strtolower($config['driver']);
@@ -25,6 +27,12 @@ class ActiveRecord extends \lithium\data\source\Database {
 				'{:driver}://{:login}:{:password}@{:host}/{:database}',
 			$config
 		);
+		if ($config['cache']) {
+			$options = array(
+				'expire' => $config['cache_expire']
+			);
+			$cfg->set_cache($config['cache'], $options);
+		}
 		$cfg->set_connections(array('default' => $connection));
 		$cfg->set_default_connection('default');
 		parent::__construct($config);
