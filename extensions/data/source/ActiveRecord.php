@@ -16,6 +16,7 @@ class ActiveRecord extends \lithium\data\source\Database {
 			'login' => 'root',
 			'password' => '',
 			'database' => 'li3',
+			'charset' => 'utf8',
 			'cache' => false,
 			'cache_expire' => 30
 		), $config);
@@ -24,7 +25,7 @@ class ActiveRecord extends \lithium\data\source\Database {
 		$connection = String::insert(
 			$driver == 'sqlite' ?
 				'sqlite://{:database}.db' :
-				'{:driver}://{:login}:{:password}@{:host}/{:database}',
+				'{:driver}://{:login}:{:password}@{:host}/{:database}?charset={:charset}',
 			$config
 		);
 		if ($config['cache']) {
