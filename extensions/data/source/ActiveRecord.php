@@ -15,14 +15,15 @@ class ActiveRecord extends \lithium\data\source\Database {
 			'host' => '127.0.0.1',
 			'login' => 'root',
 			'password' => '',
-			'database' => 'li3'
+			'database' => 'li3',
+			'charset' => 'utf8'
 		), $config);
 		$cfg->set_model_directory($config['model_directory']);
 		$driver = $config['driver'] = strtolower($config['driver']);
 		$connection = String::insert(
 			$driver == 'sqlite' ?
 				'sqlite://{:database}.db' :
-				'{:driver}://{:login}:{:password}@{:host}/{:database}',
+				'{:driver}://{:login}:{:password}@{:host}/{:database}?charset={:charset}',
 			$config
 		);
 		$cfg->set_connections(array('default' => $connection));
