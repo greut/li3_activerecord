@@ -1,7 +1,6 @@
 <?php
 
-use \lithium\core\Libraries;
-
+use lithium\core\Libraries;
 use ActiveRecord\Config;
 
 if (!defined('ACTIVERECORD_LIB_PATH')) {
