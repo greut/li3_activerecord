@@ -4,6 +4,7 @@ namespace li3_activerecord\extensions\data\source;
 
 use ActiveRecord\Config;
 use lithium\util\String;
+use li3_activerecord\extensions\analysis\Log;
 
 class ActiveRecord extends \lithium\data\source\Database {
 
@@ -18,7 +19,8 @@ class ActiveRecord extends \lithium\data\source\Database {
 			'database' => 'li3',
 			'charset' => 'utf8',
 			'cache' => false,
-			'cache_expire' => 30
+			'cache_expire' => 30,
+			'logging' => false,
 		), $config);
 		$cfg->set_model_directory($config['model_directory']);
 		$driver = $config['driver'] = strtolower($config['driver']);
@@ -33,6 +35,10 @@ class ActiveRecord extends \lithium\data\source\Database {
 				'expire' => $config['cache_expire']
 			);
 			$cfg->set_cache($config['cache'], $options);
+		}
+		if ($config['logging']) {
+			$cfg->set_logging($config['logging']);
+			$cfg->set_logger(new Log());
 		}
 		$cfg->set_connections(array('default' => $connection));
 		$cfg->set_default_connection('default');
