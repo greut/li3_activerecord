@@ -6,7 +6,7 @@ use ActiveRecord\Connection;
 
 class Model extends \ActiveRecord\Model {
 
-	public static function create($attributes = array(), $validate=true) {
+	public static function create(array $attributes=array(), $validate=true) {
 		return parent::create($attributes, $validate);
 	}
 	
