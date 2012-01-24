@@ -34,7 +34,7 @@ class ActiveRecord extends \lithium\data\source\Database {
 
 	public function disconnect() {}
 
-	public function entities($model=null) {}
+	public function sources($class=null) {}
 
 	public function describe($entity, array $meta=array()) {}
 
